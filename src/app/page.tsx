@@ -17,7 +17,7 @@ export default function Home() {
       <main className="w-[95vw] max-w-[1100px] flex flex-col gap-4 z-10 px-6 pb-16 min-h-[70vh]">
         <AboutSection />
         <div className="w-full flex justify-center">
-          <span className="text-xs text-neutral-400 italic mt-1 mb-4">You can prove it with math and still botch the implementation.</span>
+          <span className="text-xs text-neutral-400 italic mt-1 mb-4">The only constant is change ;)</span>
         </div>
         <InterestsSection />
       </main>
