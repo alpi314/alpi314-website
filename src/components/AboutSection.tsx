@@ -8,7 +8,7 @@ export default function AboutSection() {
       </div>
       <div className="flex justify-center gap-4 mt-6">
         <a
-          href="/Resume_Aleksander_Piciga.pdf"
+          href="/main/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block px-6 py-2 rounded-lg bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-500 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400"

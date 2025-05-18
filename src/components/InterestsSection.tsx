@@ -1,4 +1,4 @@
-import interests from '../data/interests.json';
+import interests from '../data/source.json';
 import InterestBox from './InterestBox';
 
 export default function InterestsSection() {
