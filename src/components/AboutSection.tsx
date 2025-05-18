@@ -2,9 +2,9 @@ export default function AboutSection() {
   return (
     <section className="border border-neutral-800 rounded-xl p-4 my-6 bg-neutral-900/80 shadow-lg">
       <div className="text-base text-neutral-200">
-        Hi, I'm a data science student interested in computer vision, AI, and coding. Welcome to my personal blog!<br /><br />
-        My journey in technology began with a excuting challanges in competitive programming and fascination for how machines perceive the world. Over the years, I've explored various topics in AI and computer science, and always enjoy learning new things and brain storming novel ideas. I enjoy building projects that combine technical rigor with creativity.<br /><br />
-        On this site, you'll find my latest projects, interests, and things I'm working on. If you're passionate about data, creativity, or just want to connect, feel free to reach out!
+        Hi, I&apos;m a data science student interested in computer vision, AI, and coding. Welcome to my personal blog!<br /><br />
+        My journey in technology began with a excuting challanges in competitive programming and fascination for how machines perceive the world. Over the years, I&apos;ve explored various topics in AI and computer science, and always enjoy learning new things and brain storming novel ideas. I enjoy building projects that combine technical rigor with creativity.<br /><br />
+        On this site, you&apos;ll find my latest projects, interests, and things I&apos;m working on. If you&apos;re passionate about data, creativity, or just want to connect, feel free to reach out!
       </div>
       <div className="flex justify-center gap-4 mt-6">
         <a

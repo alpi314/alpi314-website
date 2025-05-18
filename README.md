@@ -1,24 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aleksander Piciga's Personal Website
 
-## Getting Started
+A modern personal website built with Next.js, showcasing projects, interests, and professional experience.
 
-First, run the development server:
+## Tech Stack
+
+- **Framework**: Next.js 15
+- **Styling**: Tailwind CSS
+- **Language**: TypeScript
+- **Deployment**: Docker with Traefik
+
+## Project Structure
+
+- `/src/app` - Next.js app router pages
+- `/src/components` - React components
+- `/src/data` - JSON data for projects and interests
+- `/public` - Static assets
+
+## Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Docker Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The project includes Docker configuration for both development and production environments:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Development
+docker-compose up dev
+
+# Production
+docker-compose up prod
+```
+
+### Traefik Configuration
+
+The project is configured to work with Traefik as a reverse proxy:
+- Development: https://dev.alpi314.com
+- Production: https://www.alpi314.com
+
+Includes security headers and automatic SSL certificate management.
+
+## Features
+
+- Responsive design
+- Project showcase with type filtering
+- Modern UI with Tailwind CSS
+- Docker containerization
+- Traefik integration for production deployment
 
 ## Learn More
 
