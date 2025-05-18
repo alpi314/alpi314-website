@@ -1,5 +1,5 @@
 # Build stage
-FROM node:24-alpine AS builder
+FROM node:22.15.1-alpine AS builder
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build
 
 # Production stage
-FROM node:24-alpine AS runner
+FROM node:22.15.1-alpine AS runner
 
 WORKDIR /app
 
@@ -24,7 +24,6 @@ WORKDIR /app
 ENV NODE_ENV=production
 
 # Copy necessary files from builder
-COPY --from=builder /app/next.config.ts ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
