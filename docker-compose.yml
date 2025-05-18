@@ -1,0 +1,63 @@
+services:
+  # Development service
+  dev:
+    build:
+      context: .
+      target: builder
+    command: npm run dev
+    container_name: alpi314-dev
+    restart: unless-stopped
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.alpi314-dev.rule=Host(`dev.alpi314.com`)"
+      - "traefik.http.routers.alpi314-dev.tls=true"
+      - "traefik.http.routers.alpi314-dev.tls.certresolver=traefik-letsencrypt"
+      - "traefik.http.services.alpi314-dev.loadbalancer.server.port=3000"
+      # Security Headers
+      - "traefik.http.routers.alpi314-dev.middlewares=secure-headers@docker"
+      - "traefik.http.middlewares.secure-headers.headers.frameDeny=true"
+      - "traefik.http.middlewares.secure-headers.headers.contentTypeNosniff=true"
+      - "traefik.http.middlewares.secure-headers.headers.browserXssFilter=true"
+      - "traefik.http.middlewares.secure-headers.headers.referrerPolicy=strict-origin-when-cross-origin"
+      - "traefik.http.middlewares.secure-headers.headers.permissionsPolicy=camera=(), microphone=(), geolocation=()"
+      - "traefik.http.middlewares.secure-headers.headers.customResponseHeaders.Strict-Transport-Security=max-age=31536000; includeSubDomains"
+      - "traefik.http.middlewares.secure-headers.headers.customResponseHeaders.X-Frame-Options=SAMEORIGIN"
+
+  # Production service
+  prod:
+    build:
+      context: .
+      target: runner
+    container_name: alpi314
+    restart: always
+    environment:
+      - NODE_ENV=production
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.alpi314.rule=Host(`www.alpi314.com`)"
+      - "traefik.http.routers.alpi314.tls=true"
+      - "traefik.http.routers.alpi314.tls.certresolver=traefik-letsencrypt"
+      - "traefik.http.services.alpi314.loadbalancer.server.port=3000"
+      # Security Headers
+      - "traefik.http.routers.alpi314.middlewares=secure-headers@docker"
+      - "traefik.http.middlewares.secure-headers.headers.frameDeny=true"
+      - "traefik.http.middlewares.secure-headers.headers.contentTypeNosniff=true"
+      - "traefik.http.middlewares.secure-headers.headers.browserXssFilter=true"
+      - "traefik.http.middlewares.secure-headers.headers.referrerPolicy=strict-origin-when-cross-origin"
+      - "traefik.http.middlewares.secure-headers.headers.permissionsPolicy=camera=(), microphone=(), geolocation=()"
+      - "traefik.http.middlewares.secure-headers.headers.customResponseHeaders.Strict-Transport-Security=max-age=31536000; includeSubDomains"
+      - "traefik.http.middlewares.secure-headers.headers.customResponseHeaders.X-Frame-Options=SAMEORIGIN"
+
+networks:
+  traefik:
+    external: true 
