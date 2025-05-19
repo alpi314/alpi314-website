@@ -1,5 +1,6 @@
 "use client";
 
+import { Interest } from '@/types/interests';
 import { useState } from 'react';
 import interests from '../data/source.json';
 import InterestBox from './InterestBox';
@@ -31,7 +32,7 @@ export default function InterestsSection() {
       </div>
       <div className="flex flex-col gap-4">
         {filteredInterests.map((item, idx) => (
-          <InterestBox key={idx} {...item} />
+          <InterestBox key={idx} {...(item as Interest)} />
         ))}
       </div>
     </section>
