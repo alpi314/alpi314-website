@@ -6,10 +6,9 @@ services:
       target: runner
     container_name: alpi314
     restart: always
-    user: "1000:1000"
     volumes:
-      - ./public:/app/public:rw
-      - ./src/data:/app/src/data:rw
+      - ./public:/app/public
+      - ./src/data:/app/src/data
     environment:
       - NODE_ENV=production
     networks:
