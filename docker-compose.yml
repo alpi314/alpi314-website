@@ -1,40 +1,4 @@
 services:
-  # Development service
-  dev:
-    build:
-      context: .
-      target: dev
-    command: npm run dev
-    container_name: alpi314-dev
-    restart: unless-stopped
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - /app/.next
-      - ./public:/app/public
-      - ./src/data:/app/src/data
-    environment:
-      - NODE_ENV=development
-      - WATCHPACK_POLLING=true
-      - CHOKIDAR_USEPOLLING=true
-    networks:
-      - traefik
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.alpi314-dev.rule=Host(`dev.alpi314.com`)"
-      - "traefik.http.routers.alpi314-dev.tls=true"
-      - "traefik.http.routers.alpi314-dev.tls.certresolver=traefik-letsencrypt"
-      - "traefik.http.services.alpi314-dev.loadbalancer.server.port=3000"
-      # Security Headers
-      - "traefik.http.routers.alpi314-dev.middlewares=secure-headers@docker"
-      - "traefik.http.middlewares.secure-headers.headers.frameDeny=true"
-      - "traefik.http.middlewares.secure-headers.headers.contentTypeNosniff=true"
-      - "traefik.http.middlewares.secure-headers.headers.browserXssFilter=true"
-      - "traefik.http.middlewares.secure-headers.headers.referrerPolicy=strict-origin-when-cross-origin"
-      - "traefik.http.middlewares.secure-headers.headers.permissionsPolicy=camera=(), microphone=(), geolocation=()"
-      - "traefik.http.middlewares.secure-headers.headers.customResponseHeaders.Strict-Transport-Security=max-age=31536000; includeSubDomains"
-      - "traefik.http.middlewares.secure-headers.headers.customResponseHeaders.X-Frame-Options=SAMEORIGIN"
-
   # Production service
   prod:
     build:
@@ -42,6 +6,9 @@ services:
       target: runner
     container_name: alpi314
     restart: always
+    volumes:
+      - ./public:/app/public
+      - ./src/data:/app/src/data
     environment:
       - NODE_ENV=production
     networks:
