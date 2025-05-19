@@ -23,9 +23,9 @@ WORKDIR /app
 # Set environment to production
 ENV NODE_ENV=production
 
-# Create a non-root user
-RUN addgroup --system --gid 1001 nodejs && \
-    adduser --system --uid 1001 nextjs && \
+# Create a non-root user with UID 1000 to match host
+RUN addgroup --system --gid 1000 nodejs && \
+    adduser --system --uid 1000 nextjs && \
     mkdir -p /app/public && \
     chown -R nextjs:nodejs /app
 
