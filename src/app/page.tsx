@@ -22,7 +22,7 @@ export default function Home() {
         <InterestsSection />
       </main>
       <footer className="w-full text-center py-4 text-neutral-400 text-sm">
-        © {new Date().getFullYear()} Aleksander Piciga | contact@alpi314.com
+        © 2025 Aleksander Piciga | contact@alpi314.com
       </footer>
     </div>
   );

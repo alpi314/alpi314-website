@@ -13,7 +13,7 @@ export default function InterestBox({ type, title, photo, description, href }: I
   const cardContent = (
     <div className={`border border-neutral-800 rounded-xl p-4 flex flex-col md:flex-row gap-4 bg-neutral-900/80 shadow-lg transition-shadow items-center ${href ? 'hover:shadow-2xl hover:ring-2 hover:ring-indigo-400 cursor-pointer' : ''}`}>
       <div className="flex-shrink-0">
-        <Image src={photo} alt={title} width={80} height={80} className="rounded-lg" placeholder="blur" />
+        <Image src={photo} alt={title} width={80} height={80} className="rounded-lg"/>
       </div>
       <div>
         <div className="text-xs text-neutral-400">{type}</div>
